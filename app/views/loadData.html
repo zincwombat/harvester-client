@@ -1,0 +1,24 @@
+<div>
+    <h2>Please enter the list of Domains to analyse</h2>
+
+    <h3>Domains must appear one per line</h3>
+
+    <div class="form-group" ng-controller="uploadController">
+        <!--<table class="table table-striped">-->
+            <!--<tr>-->
+                <!--<th>Operation</th>-->
+                <!--<th>Verb</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>{{ invokeObj.operation }}</td>-->
+                <!--<td>{{ invokeObj.verb }}</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+        <label for="domains">Domains:</label>
+        <form id="domains">
+            <!--Enter text and hit enter:-->
+            <textarea id="txtArea" rows="10" cols="40" ng-model="formData"></textarea>
+            <input type="button" value="Submit" ng-click="submitData() && closeThisDialog('Some value')"/>
+        </form>
+    </div>
+</div>

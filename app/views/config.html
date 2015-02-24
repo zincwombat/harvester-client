@@ -1,0 +1,12 @@
+<h2> Main API Controller View</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+            <tr ng-repeat="prop in status_array" class="repeat-animation">
+                <td>{{ prop.key }}</td>
+                <td>{{ prop.value }}</td>
+            </tr>
+        </table>
+<footer>Version: {{ appSettings.version }}</footer>

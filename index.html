@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="harvesterApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Harvester Application</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/loading-bar.css">
+    <link rel="stylesheet" href="css/ngDialog.css">
+    <link rel="stylesheet" href="css/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="css/ng-slider.min.css">
+    <!--<link rel="stylesheet" href="node_modules/ng-slider/dist/css/ng-slider.min.css">-->
+    <!--<link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/xeditable.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            <li><a href="#/control">Control</a></li>
+            <li><a href="#/config">Config</a></li>
+            <li><a href="#/stats">Stats</a></li>
+            <li><a href="#/agents">Agents</a></li>
+            <li><a href="#/jobs">Jobs</a></li>
+            <li><a href="#/debug">Debug</a></li>
+        </ul>
+        </nav>
+    </header>
+<div class="container">
+
+    <div ng-view></div>
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="js/angular-file-upload-shim.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-animate.js"></script>
+    <script src="js/angular-file-upload.js"></script>
+    <script src="js/loading-bar.js"></script>
+    <script src="js/ngDialog.js"></script>
+    <script src="js/xeditable.js"></script>
+    <script src="js/ng-slider.min.js"></script>
+    <!--<script src="node_modules/ng-slider/dist/ng-slider.min.js"></script>-->
+    <!--<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>-->
+
+
+    <script src="app/app.js"></script>
+    <script src="app/services/values.js"></script>
+    <script src="app/services/jobFactory.js"></script>
+    <script src="app/services/timerFactory.js"></script>
+    <script src="app/services/apiFactory.js"></script>
+    <script src="app/controllers/apiController.js"></script>
+    <script src="app/controllers/jobsController.js"></script>
+    <script src="app/controllers/uploadController.js"></script>
+    <script src="app/controllers/analysisController.js"></script>
+    <script src="app/controllers/agentsController.js"></script>
+    <script src="app/controllers/filterController.js"></script>
+    <script src="app/controllers/serializerController.js"></script>
+    <script src="app/controllers/statsController.js"></script>
+</div>
+</body>
+</html>

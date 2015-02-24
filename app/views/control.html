@@ -1,0 +1,109 @@
+<h2> Main API Menu Options View</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <nav id="menu-control" class="nav navbar-default">
+                <!--<ul class="nav nav-stacked" ng-controller="uploadController">-->
+                <ul class="nav nav-stacked">
+                    <li>
+                        <!--note that currentState is in the rootscope -->
+                        <button class="btn btn-primary btn-block"
+                                type="button">{{ currentState }}
+                        </button>
+                    </li>
+                    <li ng-repeat="option in options_array">
+                        <button class="btn btn-primary btn-block"
+                                type="button"
+                                ng-click="invoke(option)">{{ option.label }}
+                        </button>
+                    </li>
+                    <li ng-if="upload_array.length>0">
+                        <button ng-controller="uploadController"
+                                class="btn btn-primary btn-block"
+                                ng-file-select="onFileSelect($files)"
+                                type="button">{{ button_label }}
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-5">
+            <!--<p>Analysis :: {{ statsObj.description }}</p>-->
+            <dl>
+                <dt>Analysis</dt>
+                <dd>{{ job.analysis_desc || 'undefined' }}</dd>
+                <dt>Description</dt>
+                <dd><a href="#" editable-text="job.description" e-style="color: green" e-required
+                       e-placeholder="Enter description" onbeforesave="setJobDescription($data)">{{ job.description ||
+                    'empty' }}</a></dd>
+                <dt>Serialiser</dt>
+                <dd>{{ job.serializer_desc || 'undefined' }}</dd>
+            </dl>
+        </div>
+        <div class="col-md-5" >
+            <table class="table table-striped x-stats">
+                <tr>
+                    <th>Metric</th>
+                    <th>Current Value</th>
+                </tr>
+                <tr>
+                    <td>Agent Gets</td>
+                    <td>{{ stats_object.datasource.gets }} / {{ stats_object.filesource.source_count }}</td>
+                </tr>
+                <tr>
+                    <td>File Reads</td>
+                    <td>{{ stats_object.filesource.file_fetches }}</td>
+                </tr>
+
+                <tr>
+                    <td>Active Agents</td>
+                    <td>{{ stats_object.agents.active }}</td>
+                </tr>
+                <tr>
+                    <td>Agent Timeouts</td>
+                    <td>{{ stats_object.agents.timeouts }}</td>
+                </tr>
+                <tr>
+                    <td>Mnesia Writes</td>
+                    <td>{{ stats_object.mnesia.mnesia_writes }}</td>
+                </tr>
+                <tr>
+                    <td>Mnesia Errors</td>
+                    <td>{{ stats_object.mnesia.mnesia_errors }}</td>
+                </tr>
+                <!-- next rows are  only displayed if a serializer has been defined -->
+                <tr ng-if="stats_object.serializer">
+                    <td>Serialiser Writes</td>
+                    <td>{{ stats_object.serializer.serializer_ok }}</td>
+                </tr>
+                <tr ng-if="stats_object.serializer">
+                    <td>Serializer Nulls</td>
+                    <td>{{ stats_object.serializer.serializer_nulls }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--<br/>-->
+<!--<table class="table table-striped">-->
+    <!--<tr>-->
+        <!--<th>Order</th>-->
+        <!--<th>Tag</th>-->
+        <!--<th>Verb</th>-->
+        <!--<th>Label</th>-->
+        <!--<th>Operation</th>-->
+        <!--<th>Description</th>-->
+    <!--</tr>-->
+    <!--<tr ng-repeat="option in menu_options" class="repeat-animation">-->
+        <!--<td>{{ option.order }}</td>-->
+        <!--<td>{{ option.tag }}</td>-->
+        <!--<td>{{ option.verb }}</td>-->
+        <!--<td>{{ option.label }}</td>-->
+        <!--<td>{{ option.operation }}</td>-->
+        <!--<td>{{ option.description }}</td>-->
+    <!--</tr>-->
+<!--</table>-->
+
+<footer>Version: {{ appSettings.version }}</footer>

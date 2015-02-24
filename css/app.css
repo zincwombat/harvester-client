@@ -1,0 +1,10 @@
+/* app css stylesheet */
+
+#menu-control {
+  width : auto;
+}
+
+.xbox {
+  border: 0.1em solid black;
+  height: auto;
+}
