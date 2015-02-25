@@ -19,6 +19,7 @@
         //    refreshMenu();
         //});
 
+
         $scope.$on('refresh', function(event, args) {
             refreshMenu();
         });

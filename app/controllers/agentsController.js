@@ -10,19 +10,15 @@
         promise.then(
             function(Data) {
                 $scope.agentOptions=Data;
-                maxAgents=Data.maxAgents;
-                defaultAgents=Data.defaultAgents;
+                var maxAgents=Data.maxAgents;
+                var defaultAgents=Data.defaultAgents;
                 $scope.value=defaultAgents;
                 $scope.options = {
                     from: 1,
-                    to: 250,
-                    step: 2,
-                    scale: [1,'|', 50, '|', 100, '|', 150, '|', 200, '|', 250],
+                    to: maxAgents,
+                    step: 1,
                     dimension: ""
                 };
-                angular.forEach(Data, function (value,key) {
-                    $scope.agents_options_array.push({key:key,value:value});
-                }, Data);
         });
 
 
@@ -31,7 +27,7 @@
             var promise=apiFactory.setNumAgents(Data);
             promise.then(
                 $scope.agentOptions.defaultAgents=Data
-            )
+            );
             return true;
         };
 
