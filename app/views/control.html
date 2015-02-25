@@ -20,11 +20,15 @@
                     </li>
                     <li ng-if="upload_array.length>0">
                         <button ng-controller="uploadController"
-                                <!--class="btn btn-primary btn-block"-->
-                                class="{{ button_class }}"
+                                ng-class="{true: 'btn btn-secondary btn-block', false: 'btn btn-primary btn-block'}[isUploading]"
                                 ng-file-select="onFileSelect($files)"
                                 type="button">{{ button_label }}
                         </button>
+                        <!--<button ng-controller="uploadController"-->
+                                <!--class="btn btn-primary btn-block"-->
+                                <!--ng-file-select="onFileSelect($files)"-->
+                                <!--type="button">{{ button_label }}-->
+                        <!--</button>-->
                     </li>
                 </ul>
             </nav>
