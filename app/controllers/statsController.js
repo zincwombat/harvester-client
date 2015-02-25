@@ -14,12 +14,12 @@
                     function(Data) {
                         $rootScope.stats_object = Data;
                     },
-                    function (data,status,headers,config) {
+                    function (data,status) {
                         alert('error: ' + status);
                         $log.log(data.error + ' ' + status);
                     }
                 );
-        };
+        }
 
         function init() {
             apiFactory.tm_start();
