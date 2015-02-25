@@ -73,13 +73,13 @@
                     <td>{{ stats_object.db_server.mnesia_errors }}</td>
                 </tr>
                 <!-- next rows are  only displayed if a serializer has been defined -->
-                <tr ng-if="stats_object.serializer">
+                <tr ng-if="stats_object.rlogger">
                     <td>Serialiser Writes</td>
-                    <td>{{ stats_object.serializer.serializer_ok }}</td>
+                    <td>{{ stats_object.rlogger.serializer_ok }}</td>
                 </tr>
-                <tr ng-if="stats_object.serializer">
+                <tr ng-if="stats_object.rlogger">
                     <td>Serializer Nulls</td>
-                    <td>{{ stats_object.serializer.serializer_nulls }}</td>
+                    <td>{{ stats_object.rlogger.serializer_nulls }}</td>
                 </tr>
             </table>
         </div>
