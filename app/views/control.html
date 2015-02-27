@@ -9,7 +9,7 @@
                     <li>
                         <!--note that currentState is in the rootscope -->
                         <button ng-class="{true: 'btn btn-success btn-block', false: 'btn btn-primary btn-block'}[isComplete]"
-                                type="button">{{ currentState }}
+                                type="button"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{ currentState }}
                         </button>
                     </li>
                     <li ng-repeat="option in options_array">
@@ -22,7 +22,7 @@
                         <button ng-controller="uploadController"
                                 ng-class="{true: 'btn btn-warning btn-block', false: 'btn btn-primary btn-block'}[isUploading]"
                                 ng-file-select="onFileSelect($files)"
-                                type="button">{{ button_label }}
+                                type="button"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> {{ button_label }}
                         </button>
                     </li>
                 </ul>
@@ -82,6 +82,11 @@
                     <td>{{ stats_object.rlogger.serializer_nulls }}</td>
                 </tr>
             </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>Event Logger Output Here</p>
         </div>
     </div>
 </div>

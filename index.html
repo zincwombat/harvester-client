@@ -19,19 +19,19 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar-default" ng-controller="headerController">
                 <ul class="nav navbar-nav">
-                    <li><a href="#/control">Control</a></li>
-                    <li><a href="#/config">Config</a></li>
-                    <li><a href="#/stats">Stats</a></li>
-                    <li><a href="#/agents">Agents</a></li>
-                    <li><a href="#/jobs">Jobs</a></li>
-                    <li><a href="#/debug">Debug</a></li>
+                <!--<ul class="nav nav-tabs">-->
+                    <li role="presentation"><a href="#/control">Control</a></li>
+                    <li role="presentation"><a href="#/config">Config</a></li>
+                    <li role="presentation"><a href="#/stats">Stats</a></li>
+                    <li role="presentation"><a href="#/agents">Agents</a></li>
+                    <li role="presentation"><a href="#/jobs">Jobs</a></li>
+                    <li role="presentation"><a href="#/debug">Debug</a></li>
                 </ul>
             </nav>
         </header>
         <div class="container">
-
             <div ng-view></div>
 
             <!-- In production use:
