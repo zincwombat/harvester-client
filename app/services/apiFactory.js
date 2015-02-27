@@ -8,6 +8,8 @@
         var TIMER_INTV = 5000;  // milliseconds
         var timerHandle;
 
+        $rootScope.isComplete=false;
+
         factory.state = function() {
             return currentState;
         }
@@ -80,6 +82,7 @@
                 .then(
                     function(Data) {
                         $rootScope.currentState = Data.state;
+                        $rootScope.isComplete = (Data.state === 'COMPLETED');
                 },
                 function() {
                     stopTimer();

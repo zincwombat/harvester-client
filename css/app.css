@@ -1,3 +1,5 @@
+/* @override http://harvester.ironcache.net/css/app.css */
+
 /* app css stylesheet */
 
 #menu-control {
@@ -8,3 +10,23 @@
   border: 0.1em solid black;
   height: auto;
 }
+
+dd {
+	padding-left: 20px;
+	font-style: italic;
+}
+
+div.row {
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+}
+
+.navbar-nav>li {
+	margin-left: 0;
+	text-transform: none;
+	text-align: center;
+	font-variant: normal;
+	font-weight: normal;
+	font-style: normal;
+}
+

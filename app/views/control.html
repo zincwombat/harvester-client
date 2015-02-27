@@ -8,7 +8,7 @@
                 <ul class="nav nav-stacked">
                     <li>
                         <!--note that currentState is in the rootscope -->
-                        <button class="btn btn-primary btn-block"
+                        <button ng-class="{true: 'btn btn-success btn-block', false: 'btn btn-primary btn-block'}[isComplete]"
                                 type="button">{{ currentState }}
                         </button>
                     </li>
@@ -24,11 +24,6 @@
                                 ng-file-select="onFileSelect($files)"
                                 type="button">{{ button_label }}
                         </button>
-                        <!--<button ng-controller="uploadController"-->
-                                <!--class="btn btn-primary btn-block"-->
-                                <!--ng-file-select="onFileSelect($files)"-->
-                                <!--type="button">{{ button_label }}-->
-                        <!--</button>-->
                     </li>
                 </ul>
             </nav>
