@@ -1,12 +1,12 @@
-<div xmlns="http://www.w3.org/1999/html">
-    <h2>Please set the Output Format and Filename</h2>
+<div class="container-fluid">
+<h2>Please set the Output Format and Filename</h2>
 
     <div>
         <dl>
-            <dd>jobid</dd>
-            <dt>{{ thisSerializer.uuid }}</dt>
-            <dd>Filename: </dd>
-            <dt><a href="#" editable-text="thisSerializer.filename"
+            <dt>jobid</dd>
+            <dd>{{ thisSerializer.uuid }}</dt>
+            <dt>Filename: </dd>
+            <dd><a href="#" editable-text="thisSerializer.filename"
                                         onbeforesave="checkFileName($data)" e-style="color: green" e-required
                                         e-placeholder="Enter filename">{{ thisSerializer.filename || 'empty' }}</a>
             </dt>

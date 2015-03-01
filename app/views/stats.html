@@ -1,3 +1,5 @@
+<div class="container-fluid">
+
 <h2>Stats View</h2>
 
         <table class="table table-striped">
@@ -7,45 +9,38 @@
             </tr>
 
             <tr>
-                <td>Mnesia Writes</td>
-                <td>{{ stats_object.mnesia.mnesia_writes }}</td>
+                <td>Agent Gets</td>
+                <td>{{ stats_object.datasource.gets }} / {{ stats_object.filesource.source_count }}</td>
             </tr>
             <tr>
-                <td>Mnesia Errors</td>
-                <td>{{ stats_object.mnesia.mnesia_errors }}</td>
-            </tr>
-            <tr>
-                <td>DNInfo Writes</td>
-                <td>{{ stats_object.mnesia.dninfo }}</td>
-            </tr>
-            <tr>
-                <td>DNError Writes</td>
-                <td>{{ stats_object.mnesia.dnerror }}</td>
-            </tr>
-            <tr>
-                <td>DNSession Writes</td>
-                <td>{{ stats_object.mnesia.dnsession }}</td>
+                <td>File Reads</td>
+                <td>{{ stats_object.filesource.file_fetches }}</td>
             </tr>
 
             <tr>
-                <td>STATE</td>
-                <td>{{ stats_object.state }}</td>
-            </tr>
-            <tr>
-                <td>Agent Gets</td>
-                <td>{{ stats_object.dsGets }}</td>
-            </tr>
-            <tr>
-                <td>Logger Writes</td>
-                <td>{{ stats_object.logger_writes }}</td>
-            </tr>
-            <tr>
                 <td>Active Agents</td>
-                <td>{{ stats_object.activeAgents }}</td>
+                <td>{{ stats_object.agent.active }}</td>
             </tr>
-            <!--<tr ng-repeat="prop in stats_array" class="repeat-animation">-->
-                <!--<td>{{ prop.key }}</td>-->
-                <!--<td>{{ prop.value }}</td>-->
-            <!--</tr>-->
+            <tr>
+                <td>Agent Timeouts</td>
+                <td>{{ stats_object.agent.timeouts }}</td>
+            </tr>
+            <tr>
+                <td>Mnesia Writes</td>
+                <td>{{ stats_object.db_server.mnesia_writes }}</td>
+            </tr>
+            <tr>
+                <td>Mnesia Errors</td>
+                <td>{{ stats_object.db_server.mnesia_errors }}</td>
+            </tr>
+            <!-- next rows are  only displayed if a serializer has been defined -->
+            <tr ng-if="stats_object.rlogger">
+                <td>Serialiser Writes</td>
+                <td>{{ stats_object.rlogger.serializer_ok }}</td>
+            </tr>
+            <tr ng-if="stats_object.rlogger">
+                <td>Serializer Nulls</td>
+                <td>{{ stats_object.rlogger.serializer_nulls }}</td>
+            </tr>
         </table>
-<footer>Version: {{ appSettings.version }}</footer>
+</div>

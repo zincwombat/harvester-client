@@ -1,34 +1,36 @@
-<h2>Completed Analysis Jobs</h2>
+<div class="container-fluid">
+
+    <h2>Completed Analysis Jobs</h2>
 
 
-<!--Filter: <input type="text" ng-model="fileFilter.name"/>-->
+    <!--Filter: <input type="text" ng-model="fileFilter.name"/>-->
 
-<table class="table table-striped">
-    <tr>
-        <th ng-click="doSort('uuid')">uuid</th>
-        <th ng-click="doSort('moduleid')">Module</th>
-        <th ng-click="doSort('functionid')">Function</th>
-        <th ng-click="doSort('start_tm')">Started</th>
-        <th ng-click="doSort('num_recs')">Records</th>
-        <th ng-click="doSort('num_timeouts')">Timeouts</th>
-        <th ng-click="doSort('num_errs')">Errors</th>
-        <th ng-click="doSort('end_status')">Status</th>
-        <th>Action</th>
-    </tr>
-    <!--<tr ng-repeat="file in jobFiles | filter:fileFilter | orderBy:sortBy:reverse" class="repeat-animation">-->
-    <!--<tr ng-repeat="job in jobs | orderBy:sortBy:reverse" class="repeat-animation">-->
-    <tr ng-repeat="job in jobs | orderBy:sortBy:reverse">
-        <td ng-click="openDialog(job.uuid)">{{ job.uuid }}</td>
-        <td>{{ job.moduleid}}</td>
-        <td>{{ job.functionid}}</td>
-        <td>{{ job.start_tm}}</td>
-        <td>{{ job.num_recs }}</td>
-        <td>{{ job.num_timeouts }}</td>
-        <td>{{ job.num_errs }}</td>
-        <td>{{ job.end_status }}</td>
-        <td><button class="btn btn-primary" ng-click="deleteJob(job.uuid)">Delete</button></td>
-    </tr>
-</table>
-        <br/>
-        <span>Total Jobs: {{ jobs.length }}</span>
-<footer>Version: {{ appSettings.version }}</footer>
+    <table class="table table-striped">
+        <tr>
+            <th ng-click="doSort('uuid')">uuid</th>
+            <th ng-click="doSort('moduleid')">Module</th>
+            <th ng-click="doSort('functionid')">Function</th>
+            <th ng-click="doSort('start_tm')">Started</th>
+            <th ng-click="doSort('num_recs')">Records</th>
+            <th ng-click="doSort('num_timeouts')">Timeouts</th>
+            <th ng-click="doSort('num_errs')">Errors</th>
+            <th ng-click="doSort('end_status')">Status</th>
+            <th>Action</th>
+        </tr>
+        <!--<tr ng-repeat="file in jobFiles | filter:fileFilter | orderBy:sortBy:reverse" class="repeat-animation">-->
+        <!--<tr ng-repeat="job in jobs | orderBy:sortBy:reverse" class="repeat-animation">-->
+        <tr ng-repeat="job in jobs | orderBy:sortBy:reverse">
+            <td ng-click="openDialog(job.uuid)">{{ job.uuid }}</td>
+            <td>{{ job.moduleid}}</td>
+            <td>{{ job.functionid}}</td>
+            <td>{{ job.start_tm}}</td>
+            <td>{{ job.num_recs }}</td>
+            <td>{{ job.num_timeouts }}</td>
+            <td>{{ job.num_errs }}</td>
+            <td>{{ job.end_status }}</td>
+            <td>
+                <button class="btn btn-primary" ng-click="deleteJob(job.uuid)">Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>

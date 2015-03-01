@@ -20,14 +20,15 @@
     <body>
         <header>
             <nav class="navbar navbar-default" ng-controller="headerController">
+            <!--<nav class="navbar navbar-default">-->
                 <ul class="nav navbar-nav">
                 <!--<ul class="nav nav-tabs">-->
-                    <li role="presentation"><a href="#/control">Control</a></li>
-                    <li role="presentation"><a href="#/config">Config</a></li>
-                    <li role="presentation"><a href="#/stats">Stats</a></li>
-                    <li role="presentation"><a href="#/agents">Agents</a></li>
-                    <li role="presentation"><a href="#/jobs">Jobs</a></li>
-                    <li role="presentation"><a href="#/debug">Debug</a></li>
+                    <li role="presentation" ng-class="{ active: isActive('/control')}"><a href="#/control">Control</a></li>
+                    <li role="presentation" ng-class="{ active: isActive('/config')}"><a href="#/config">Config</a></li>
+                    <li role="presentation" ng-class="{ active: isActive('/stats')}"><a href="#/stats">Stats</a></li>
+                    <li role="presentation" ng-class="{ active: isActive('/agents')}"><a href="#/agents">Agents</a></li>
+                    <li role="presentation" ng-class="{ active: isActive('/jobs')}"><a href="#/jobs">Jobs</a></li>
+                    <li role="presentation" ng-class="{ active: isActive('/debug')}"><a href="#/debug">Debug</a></li>
                 </ul>
             </nav>
         </header>
@@ -46,7 +47,6 @@
             <script src="js/ngDialog.js"></script>
             <script src="js/xeditable.js"></script>
             <script src="js/ng-slider.min.js"></script>
-
 
             <script src="app/app.js"></script>
             <script src="app/services/values.js"></script>

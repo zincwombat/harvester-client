@@ -137,7 +137,7 @@
             return doApi('get_serializerOptions');
         };
 
-        factory.getStatus = function () {
+        factory.getConfig = function () {
             return doApi('get_config');
         };
 

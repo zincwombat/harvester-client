@@ -14,10 +14,6 @@
         $scope.job = {};
         $scope.invokeObj = {};
 
-        //$scope.$on('currentState', function(event,args) {
-        //    alert("handled currentState update");
-        //    refreshMenu();
-        //});
 
         $scope.$on('refresh', function(event, args) {
             refreshMenu();
@@ -136,12 +132,12 @@
             )
         };
 
-        function currentState() {
-            apiFactory.getStatus()
+        function currentConfig() {
+            apiFactory.getConfig()
                 .then(
                     function(Data) {
                         $scope.raw = Data;
-                        $scope.statsObj = Data;
+                        $rootScope.config_obj = Data;
                         $scope.status_array = [];
 
                         angular.forEach(Data, function (value,key) {
@@ -167,10 +163,8 @@
             )
         };
 
-
-
         function refreshMenu() {
-            currentState();
+            currentConfig();
             apiFactory.getMenuOptions()
                 .then(
                     function (Data) {
