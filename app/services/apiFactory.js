@@ -93,6 +93,10 @@
             return doApi('get_uploadedFiles');
         }
 
+        factory.getResultFiles = function() {
+            return doApi('get_resultFiles');
+        }
+
         factory.updateState = function() {
             updateState();
         }

@@ -6,7 +6,7 @@
             <th ng-click="doSort('size')">Size</th>
         </tr>
         <tr ng-repeat="prop in fileObj.files | orderBy:sortBy:reverse" class="repeat-animation">
-            <td>{{ prop.name }}</td>
+            <td><a href="{{ fileObj.reldir }}/{{ prop.name }}">{{ prop.name }}</a></td>
             <td>{{ prop.size }}</td>
         </tr>
     </table>

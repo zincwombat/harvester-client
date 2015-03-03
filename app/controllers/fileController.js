@@ -10,7 +10,7 @@
         function getFiles() {
             $scope.fileObj={};
 
-            apiFactory.getUploadedFiles()
+            apiFactory.getResultFiles()
                 .then(
                 function(Data) {
                     $scope.fileObj = Data;
