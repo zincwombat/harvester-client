@@ -1,14 +1,13 @@
 <div class="container-fluid">
-
     <h2>Results Files</h2>
     <table class="table table-striped">
         <tr>
-            <th>Name</th>
-            <th>Size</th>
+            <th ng-click="doSort('name')">Name</th>
+            <th ng-click="doSort('size')">Size</th>
         </tr>
-        <!--<tr ng-repeat="prop in status_array" class="repeat-animation">-->
-            <!--<td>{{ prop.key }}</td>-->
-            <!--<td>{{ prop.value }}</td>-->
-        <!--</tr>-->
+        <tr ng-repeat="prop in fileObj.files | orderBy:sortBy:reverse" class="repeat-animation">
+            <td>{{ prop.name }}</td>
+            <td>{{ prop.size }}</td>
+        </tr>
     </table>
 </div>

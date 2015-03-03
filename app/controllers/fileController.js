@@ -5,15 +5,15 @@
         $scope.appSettings = appSettings;
         $scope.sortBy = 'name';
         $scope.reverse = false;
-        $scope.files = {};
+        $scope.fileObj = {};
 
         function getFiles() {
-            $scope.files={};
+            $scope.fileObj={};
 
             apiFactory.getUploadedFiles()
                 .then(
                 function(Data) {
-                    $rootScope.stats_object = Data;
+                    $scope.fileObj = Data;
                 },
                 function (data,status) {
                     alert('error: ' + status);
