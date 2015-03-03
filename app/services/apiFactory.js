@@ -89,6 +89,10 @@
                 });
         };
 
+        factory.getUploadedFiles = function() {
+            return doApi('get_uploadedFiles');
+        }
+
         factory.updateState = function() {
             updateState();
         }

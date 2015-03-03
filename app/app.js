@@ -25,6 +25,10 @@
                 controller: 'statsController',
                 templateUrl: 'app/views/stats.html'
             })
+            .when('/results', {
+                controller: 'fileController',
+                templateUrl: 'app/views/files.html'
+            })
             .when('/agents', {
                 controller: 'agentsController',
                 templateUrl: 'app/views/agents.html'
