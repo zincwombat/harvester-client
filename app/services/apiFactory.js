@@ -97,6 +97,19 @@
             return doApi('get_resultFiles');
         }
 
+        factory.deleteFile = function(Path) {
+            var request= $http({
+                method  :   'get',
+                url     :   baseUrl + '/api/op',
+                params  :   {
+                    module :   apiModule,
+                    function : 'delete_file',
+                    args : Path
+                }
+            })
+            return request;
+        };
+
         factory.updateState = function() {
             updateState();
         }

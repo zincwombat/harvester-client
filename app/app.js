@@ -29,6 +29,10 @@
                 controller: 'fileController',
                 templateUrl: 'app/views/files.html'
             })
+            .when('/uploads', {
+                controller: 'fileController',
+                templateUrl: 'app/views/uploads.html'
+            })
             .when('/agents', {
                 controller: 'agentsController',
                 templateUrl: 'app/views/agents.html'
