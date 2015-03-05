@@ -1,23 +1,19 @@
 <div class="container-fluid">
     <h2>Results Files</h2>
 
-    <div ng-if="fileObj.numfiles>0">
-        <table class="table table-striped">
-            <tr>
-                <th ng-click="doSort('name')">Name</th>
-                <th ng-click="doSort('size')">Size</th>
-                <th>Action</th>
-            </tr>
-            <tr ng-repeat="prop in fileObj.files | orderBy:sortBy:reverse" class="repeat-animation">
-                <td><a href="{{ fileObj.reldir }}/{{ prop.name }}">{{ prop.name }}</a></td>
-                <td>{{ prop.size }}</td>
-                <td>
-                    <button class="btn btn-primary btn-xs" ng-click="deleteFile(prop.path)">Delete</button>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div ng-if="fileObj.numfiles==0">
-        <p>there are no results files available</p>
-    </div>
+    <table class="table table-striped">
+        <tr>
+            <th ng-click="doSort('name')">Name</th>
+            <th ng-click="doSort('size')">Size</th>
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat="prop in fileObj.files | orderBy:sortBy:reverse" class="repeat-animation">
+            <td><a href="{{ fileObj.reldir }}/{{ prop.name }}">{{ prop.name }}</a></td>
+            <td>{{ prop.size }}</td>
+            <td>
+                <button class="btn btn-primary btn-xs" ng-click="deleteFile(prop.path)">Delete</button>
+            </td>
+        </tr>
+    </table>
+
 </div>
