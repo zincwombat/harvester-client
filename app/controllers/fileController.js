@@ -8,6 +8,21 @@
         $scope.fpath = $location.path();
         $scope.fileObj = {};
 
+        function changeLocation (url, forceReload) {
+            $scope = $scope || angular.element(document).scope();
+            if(forceReload || $scope.$$phase) {
+                window.location = url;
+            }
+            else {
+                //only use this if you want to replace the history stack
+                //$location.path(url).replace();
+
+                //this this if you want to change the URL and add it to the history stack
+                $location.path(url);
+                $scope.$apply();
+            }
+        };
+
         function getFiles() {
             $scope.fileObj={};
 
@@ -24,7 +39,7 @@
                         }
                     );
                     break;
-                case '/uploaded' :
+                case '/uploads' :
                     apiFactory.getUploadedFiles()
                         .then(
                         function(Data) {
@@ -47,6 +62,18 @@
             apiFactory.deleteFile(path)
                 .success(function (Data) {
                     getFiles();
+                })
+                .error(function (data,status,headers,config) {
+                    alert('error: ' + status);
+                    $log.log(data.error + ' ' + status);
+                });
+
+        }
+
+        $scope.loadFile = function(path) {
+            apiFactory.loadFile(path)
+                .success(function (Data) {
+                    changeLocation('/',false);
                 })
                 .error(function (data,status,headers,config) {
                     alert('error: ' + status);

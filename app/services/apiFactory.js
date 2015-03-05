@@ -110,6 +110,19 @@
             return request;
         };
 
+        factory.loadFile = function(Path) {
+            var request= $http({
+                method  :   'get',
+                url     :   baseUrl + '/api/op',
+                params  :   {
+                    module :   apiModule,
+                    function : 'load_file',
+                    args : Path
+                }
+            })
+            return request;
+        };
+
         factory.updateState = function() {
             updateState();
         }

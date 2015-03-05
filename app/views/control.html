@@ -10,14 +10,16 @@
                 <ul class="nav nav-stacked">
                     <li>
                         <!--note that currentState is in the rootscope -->
-                        <button ng-class="{true: 'btn btn-success btn-block', false: 'btn btn-primary btn-block'}[isComplete]"
-                                type="button"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{ currentState }}
+                        <button ng-class="applyButtonClass()"
+                                type="button"><span ng-class="applyRunStateGlyph()" aria-hidden="true"></span> {{ currentState }}
                         </button>
                     </li>
+                    <!-- this section is dependent on {{ currentState }}-->
                     <li ng-repeat="option in options_array">
                         <button class="btn btn-primary btn-block"
                                 type="button"
-                                ng-click="invoke(option)">{{ option.label }}
+                                ng-click="invoke(option)">
+                                <span ng-class="applyMenuGlyph(option)" aria-hidden="true"></span> {{ option.label }}
                         </button>
                     </li>
                     <li ng-if="upload_array.length>0">

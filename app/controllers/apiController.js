@@ -1,6 +1,6 @@
 (function() {
 
-    var apiController = function ($scope, $rootScope, $log, $http, $interval, apiFactory, ngDialog, appSettings) {
+    var apiController = function ($scope, $rootScope, usSpinnerService ,$log, $http, $interval, apiFactory, ngDialog, appSettings) {
 
         $scope.sortBy = 'name';
         $scope.reverse = false;
@@ -115,6 +115,51 @@
             apiFactory.setJobDescription(JobDescription);
         };
 
+        $scope.applyMenuGlyph =  function(MenuOption) {
+            switch(MenuOption.tag) {
+                case "main" :
+                    return "glyphicon glyphicon-home";
+                case "import_file" :
+                    return "glyphicon glyphicon-import";
+                case "purge" :
+                    return "glyphicon glyphicon-remove";
+                case "analysis" :
+                    return "glyphicon glyphicon-wrench";
+                case "filter" :
+                    return "glyphicon glyphicon-book";
+                case "start" :
+                    return "glyphicon glyphicon-play";
+                case "stop" :
+                    return "glyphicon glyphicon-stop";
+                case "suspend" :
+                    return "glyphicon glyphicon-pause";
+                default :
+                    return "glyphicon glyphicon-star";
+            }
+        };
+
+        $scope.applyRunStateGlyph =  function() {
+            switch($rootScope.currentState) {
+                case "RUNNING" :
+                    return "glyphicon glyphicon-repeat";
+                case "IDLE" :
+                    return "glyphicon glyphicon-star";
+                case "COMPLETED" :
+                    return "glyphicon glyphicon-ok";
+                default :
+                    return "glyphicon glyphicon-star";
+            }
+        };
+
+        $scope.applyButtonClass =  function() {
+            if ($rootScope.isComplete) {
+                return "btn btn-success btn-block";
+            };
+            if ($rootScope.currentState=='RUNNING')
+                return "btn btn-danger btn-block";
+            return "btn btn-primary btn-block";
+        };
+
 
         function doInvoke(Obj,Payload) {
             var promise = apiFactory.invoke(Obj.operation,Obj.verb,{},Payload);
@@ -210,6 +255,8 @@
             refreshMenu();
         }
 
+
+
         init();
 
         $scope.doSort = function(propName) {
@@ -219,7 +266,7 @@
 
     };
 
-    apiController.$inject = ['$scope', '$rootScope', '$log', '$http', '$interval', 'apiFactory', 'ngDialog','appSettings'];
+    apiController.$inject = ['$scope', '$rootScope', 'usSpinnerService', '$log', '$http', '$interval', 'apiFactory', 'ngDialog','appSettings'];
 
     angular.module('harvesterApp')
         .controller('apiController', apiController);

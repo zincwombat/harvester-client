@@ -7,27 +7,32 @@
             <tr>
                 <td>Current Active Agents</td>
                 <td>{{ agentOptions.activeAgents }}</td>
+                <td/>
             </tr>
             <tr>
                 <td>Configured Agents</td>
                 <td>{{ agentOptions.defaultAgents }}</td>
-                <td><button class="btn btn-primary" ng-click="openDialog(agentOptions)">Change</button></td>
+                <td><button class="btn btn-primary btn-xs" ng-click="openDialog(agentOptions)">Change</button></td>
             </tr>
             <tr>
                 <td>Maximum Allowed Agents</td>
                 <td>{{ agentOptions.maxAgents }}</td>
+                <td/>
             </tr>
             <tr>
                 <td>Agent Timeout (millisecs)</td>
                 <td>{{ agentOptions.timeout }}</td>
+                <td/>
             </tr>
             <tr>
                 <td>Agent Maximum Requests</td>
                 <td>{{ agentOptions.max_rq }}</td>
+                <td/>
             </tr>
             <tr>
                 <td>Agent Gets</td>
                 <td>{{ agentOptions.agent_gets }}</td>
+                <td/>
             </tr>
             <!--<tr ng-repeat="option in agents_options_array">-->
                 <!--<td>{{ option.key }}</td>-->
