@@ -167,11 +167,11 @@
 
         $scope.applyButtonClass =  function() {
             if ($rootScope.isComplete) {
-                return "btn btn-success btn-block";
+                return "x-state btn btn-success btn-block";
             };
             if ($rootScope.currentState=='RUNNING')
-                return "btn btn-danger btn-block";
-            return "btn btn-primary btn-block";
+                return "x-state btn btn-danger btn-block";
+            return "x-state btn btn-primary btn-block";
         };
 
         function startSpin() {
