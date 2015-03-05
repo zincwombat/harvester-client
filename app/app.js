@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('harvesterApp', ['ngRoute', 'ngAnimate', 'ngSlider', 'angularFileUpload', 'angular-loading-bar', 'ngDialog', 'xeditable']);
+    var app = angular.module('harvesterApp', ['ngRoute', 'angularSpinner','ngAnimate', 'ngSlider', 'angularFileUpload', 'angular-loading-bar', 'ngDialog', 'xeditable']);
 
     app.config(function ($routeProvider) {
         $routeProvider

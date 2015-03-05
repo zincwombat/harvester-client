@@ -15,6 +15,14 @@
         $scope.invokeObj = {};
 
 
+        $rootScope.$on('us-spinner:spin', function(event, key) {
+            $scope.spinneractive = true;
+        });
+
+        $rootScope.$on('us-spinner:stop', function(event, key) {
+            $scope.spinneractive = false;
+        });
+
         $scope.$on('refresh', function(event, args) {
             refreshMenu();
         });
@@ -139,9 +147,15 @@
         };
 
         $scope.applyRunStateGlyph =  function() {
+            if ($rootScope.currentState=='RUNNING') {
+                startSpin();
+            }
+            else {
+                stopSpin();
+            }
             switch($rootScope.currentState) {
                 case "RUNNING" :
-                    return "glyphicon glyphicon-repeat";
+                    return "glyphicon glyphicon-refresh";
                 case "IDLE" :
                     return "glyphicon glyphicon-star";
                 case "COMPLETED" :
@@ -160,6 +174,18 @@
             return "btn btn-primary btn-block";
         };
 
+        function startSpin() {
+            if (!$scope.spinneractive) {
+                usSpinnerService.spin('spinner-1');
+                $scope.startcounter++;
+            }
+        };
+
+        function stopSpin() {
+            if ($scope.spinneractive) {
+                usSpinnerService.stop('spinner-1');
+            }
+        };
 
         function doInvoke(Obj,Payload) {
             var promise = apiFactory.invoke(Obj.operation,Obj.verb,{},Payload);
