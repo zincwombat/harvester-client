@@ -11,22 +11,36 @@
                     <li>
                         <!--note that currentState is in the rootscope -->
                         <button ng-class="applyButtonClass()"
-                                type="button"><span ng-class="applyRunStateGlyph()" us-spinner="{radius:8, width:3, length:3, color:'#fff'}" spinner-key="spinner-1" aria-hidden="true"></span>{{ currentState }}
+                                type="button">
+                            <span ng-class="applyRunStateGlyph()"
+                                  us-spinner="{radius:8, width:3, length:3, color:'#fff'}"
+                                  spinner-key="spinner-1"
+                                  aria-hidden="true">
+                            </span>
+                            {{ currentState }}
                         </button>
                     </li>
+                    <hr/>
                     <!-- this section is dependent on {{ currentState }}-->
                     <li ng-repeat="option in options_array">
-                        <button class="btn btn-primary btn-block"
+                        <button class="btn btn-primary btn-block x-action"
                                 type="button"
                                 ng-click="invoke(option)">
-                                <span ng-class="applyMenuGlyph(option)" aria-hidden="true"></span> {{ option.label }}
+                            <span ng-class="applyMenuGlyph(option)"
+                                  aria-hidden="true">
+                            </span>
+                            {{ option.label }}
                         </button>
                     </li>
                     <li ng-if="upload_array.length>0">
                         <button ng-controller="uploadController"
                                 ng-class="{true: 'btn btn-warning btn-block', false: 'btn btn-primary btn-block'}[isUploading]"
                                 ng-file-select="onFileSelect($files)"
-                                type="button"><span class="glyphicon glyphicon-import" aria-hidden="true"></span> {{ button_label }}
+                                type="button">
+                            <span class="glyphicon glyphicon-import"
+                                  aria-hidden="true">
+                            </span>
+                            {{ button_label }}
                         </button>
                     </li>
                 </ul>

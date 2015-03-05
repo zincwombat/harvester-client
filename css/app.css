@@ -31,10 +31,23 @@ div.row {
 }
 
 .x-state {
-	margin-bottom: 10px;
+	margin-bottom: 0;
 }
+
+hr {
+	width: 80%;
+	height: 1px;
+	background-color: #0432ff;
+	color:#FF0066;
+	margin: 10px auto;
+}
+
 
 .glyphicon {
 	margin-right: 10px;
+}
+
+button.x-action {
+	margin-bottom: 5px;
 }
 
