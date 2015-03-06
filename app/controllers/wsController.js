@@ -1,12 +1,14 @@
+
 (function () {
 
-    var wsController = function ($scope, $rootScope, ngWebsocket, apiFactory,  appSettings) {
+    var wsController = function (wsFactory) {
 
         $scope.appSettings = appSettings;
+        $scope.wsFactory = wsFactory;
 
     };
 
-    wsController.$inject = ['$scope', '$rootScope', 'ngWebsocket',  'apiFactory', 'appSettings'];
+    wsController.$inject = ['wsFactory'];
 
     angular.module('harvesterApp')
         .controller('wsController', wsController);

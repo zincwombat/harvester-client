@@ -101,11 +101,14 @@
             </table>
         </div>
     </div>
-    <div class="row" ng-controller="wsController">
-        <div class="col-md-12">
-            <p>Event Logger Output Here</p>
-        </div>
-    </div>
+
+    <section ng-controller="wsController">
+        <ul>
+            <li ng-repeat="data in wsFactory.collection track by $index">
+                {{ data }}
+            </li>
+        </ul>
+    </section>
 </div>
 
 <!--<br/>-->

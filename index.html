@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!--suppress HtmlUnknownAnchorTarget -->
 <html ng-app="harvesterApp">
+<!--<html>-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,6 +17,7 @@
         <link rel="stylesheet" href="css/ngDialog-theme-default.css">
         <link rel="stylesheet" href="css/ng-slider.min.css">
         <link rel="stylesheet" href="css/xeditable.css">
+
     </head>
     <body>
         <header>
@@ -50,7 +52,6 @@
             <script src="js/ng-slider.min.js"></script>
             <script src="js/angular-spinner.js"></script>
             <script src="js/spin.js"></script>
-            <script src="js/ng-websocket.js"></script>
 
 
             <script src="app/app.js"></script>
@@ -67,7 +68,9 @@
             <script src="app/controllers/serializerController.js"></script>
             <script src="app/controllers/statsController.js"></script>
             <script src="app/controllers/headerController.js"></script>
-            <script src="app/controllers/wsController.js"></script>
+            <script src="bower_components/angular-websocket/angular-websocket.js"></script>
+
+            <script src="app/services/wsFactory.js"></script>
         </div>
     </body>
 </html>
