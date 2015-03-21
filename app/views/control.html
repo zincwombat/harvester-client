@@ -59,7 +59,7 @@
                 <dd>{{ job.serializer_desc || 'undefined' }}</dd>
             </dl>
         </div>
-        <div class="col-md-5" >
+        <div class="col-md-5">
             <table class="table table-striped x-stats">
                 <tr>
                     <th>Metric</th>
@@ -102,33 +102,27 @@
         </div>
     </div>
 
-    <section ng-controller="wsController">
-        <ul>
-            <li ng-repeat="data in wsFactory.collection track by $index">
-                {{ data }}
-            </li>
-        </ul>
-    </section>
-</div>
+    <div class="row">
+        <div class="col-md-1">
+            <div class="wsx_control">
+                <button class="btn btn-primary btn-xs">Button 1</button>
+                <button class="btn btn-primary btn-xs">Button 2</button>
+                <button class="btn btn-primary btn-xs">Button 3</button>
+            </div>
+        </div>
+        <div class="col-md-11">
 
-<!--<br/>-->
-<!--<table class="table table-striped">-->
-    <!--<tr>-->
-        <!--<th>Order</th>-->
-        <!--<th>Tag</th>-->
-        <!--<th>Verb</th>-->
-        <!--<th>Label</th>-->
-        <!--<th>Operation</th>-->
-        <!--<th>Description</th>-->
-    <!--</tr>-->
-    <!--<tr ng-repeat="option in menu_options" class="repeat-animation">-->
-        <!--<td>{{ option.order }}</td>-->
-        <!--<td>{{ option.tag }}</td>-->
-        <!--<td>{{ option.verb }}</td>-->
-        <!--<td>{{ option.label }}</td>-->
-        <!--<td>{{ option.operation }}</td>-->
-        <!--<td>{{ option.description }}</td>-->
-    <!--</tr>-->
-<!--</table>-->
+            <section ng-controller="wsController">
+                <div ng-if="wsFactory.cnt()>0" id="wsx">
+                    <ul>
+                        <li ng-repeat="data in wsFactory.collection track by $index">
+                            {{ data.type }} : {{ data.timestamp }} : {{ data.content }}
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
 
 <footer>Version: {{ appSettings.version }}</footer>

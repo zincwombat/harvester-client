@@ -1,5 +1,5 @@
 (function () {
-    //'use strict';
+    'use strict';
 
     var queueFactory=function() {
 
@@ -16,8 +16,6 @@
 
             // Trim any initial excess from the queue.
             fixedQueue.trimTail.call( queue );
-
-            alert("called fixedQueue with size: " + size);
 
             return(queue);
         };

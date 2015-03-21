@@ -2,7 +2,6 @@
 (function () {
 
     var wsController = function ($scope, wsFactory) {
-
         $scope.wsFactory = wsFactory;
     };
 

@@ -51,3 +51,16 @@ button.x-action {
 	margin-bottom: 5px;
 }
 
+#wsx {
+	background-color: #000;
+}
+
+#wsx ul {
+	color: #8df900;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font: 1em "Courier New", Courier, mono;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+

@@ -4,11 +4,13 @@
         <tr>
             <th ng-click="doSort('name')">Name</th>
             <th ng-click="doSort('size')">Size</th>
+            <th ng-click="doSort('created')">Created</th>
             <th>Action</th>
         </tr>
         <tr ng-repeat="prop in fileObj.files | orderBy:sortBy:reverse" class="repeat-animation">
             <td><a href="{{ fileObj.reldir }}/{{ prop.name }}">{{ prop.name }}</a></td>
             <td>{{ prop.size }}</td>
+            <td>{{ prop.created }}</td>
             <td>
                 <button class="btn btn-primary btn-xs" ng-click="deleteFile(prop.path)">Delete</button>
                 <button class="btn btn-warning btn-xs" ng-click="loadFile(prop.path)">Load</button>

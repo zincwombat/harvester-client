@@ -3,8 +3,8 @@
     var fileController = function ($scope, $rootScope, $location, $log, $http, apiFactory, appSettings) {
 
         $scope.appSettings = appSettings;
-        $scope.sortBy = 'name';
-        $scope.reverse = false;
+        $scope.sortBy = 'created';
+        $scope.reverse = true;
         $scope.fpath = $location.path();
         $scope.fileObj = {};
 

@@ -1,6 +1,6 @@
 (function () {
 
-    var uploadController = function ($scope, $upload, apiFactory,  appSettings) {
+    var uploadController = function ($scope, $rootScope, $upload, apiFactory,  appSettings) {
         var defaultLabel = "Import File";
 
         $scope.appSettings = appSettings;
@@ -39,7 +39,7 @@
         };
     };
 
-    uploadController.$inject = ['$scope', '$upload', 'apiFactory', 'appSettings'];
+    uploadController.$inject = ['$scope', '$rootScope', '$upload', 'apiFactory', 'appSettings'];
 
     angular.module('harvesterApp')
         .controller('uploadController', uploadController);

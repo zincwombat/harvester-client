@@ -25,6 +25,7 @@
 
         $scope.$on('refresh', function(event, args) {
             refreshMenu();
+            updateMetrics();
         });
 
         $scope.$on('formData', function(event, args) {

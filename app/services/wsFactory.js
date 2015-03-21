@@ -4,18 +4,24 @@
 
         var wsx_url = appSettings.wsx_url;
         var dataStream = $websocket(wsx_url);
+        var wsx_cnt=0;
+
         //var collection = [];
 
-        var queuesize=appSettings.wsx_queuesize;
+        var queuesize=appSettings.wsx_queue;
         var collection = queueFactory.init(queuesize);
 
         dataStream.onMessage(function(message) {
-            //collection.push(JSON.parse(message.data));
-            collection.push(message.data);
+            collection.push(JSON.parse(message.data));
+            //collection.push(message.data);
+            wsx_cnt++;
         });
 
         var methods = {
             collection: collection,
+            cnt: function() {
+                return wsx_cnt;
+            },
             get: function() {
                 dataStream.send(JSON.stringify({ action: 'get' }));
             }
