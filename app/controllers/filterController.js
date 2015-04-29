@@ -5,8 +5,13 @@
         $scope.appSettings = appSettings;
         $scope.filter_options_array=[];
 
-        $scope.submitData = function(Data) {
+        $scope.setFilter = function(Data) {
             $scope.$emit('filterData', Data);
+            return true;
+        };
+
+        $scope.clearFilters = function(Data) {
+            $scope.$emit('clearFilters');
             return true;
         };
 

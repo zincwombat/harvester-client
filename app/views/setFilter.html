@@ -1,18 +1,16 @@
 <div class="container-fluid">
-<h2>Please set the Output Format</h2>
-
+<h2>Set the Filter</h2>
     <div ng-controller="filterController">
         <table class="table table-striped">
             <tr>
                 <th>Description</th>
-                <th>Format</th>
                 <th></th>
             </tr>
             <tr ng-repeat="option in filter_options_array">
                 <td>{{ option.desc }}</td>
-                <td>{{ option.format }}</td>
-                <td><button class="btn btn-primary" ng-click="submitData(option) && closeThisDialog('Some Value')">Select</button></td>
+                <td><button class="btn btn-primary btn-xs" ng-click="setFilter(option) && closeThisDialog('Some Value')">Select</button></td>
             </tr>
         </table>
+        <button class="btn btn-primary btn-xs" ng-click="clearFilters() && closeThisDialog('Some Value')">Clear</button>
     </div>
 </div>

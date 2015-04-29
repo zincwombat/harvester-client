@@ -1,5 +1,5 @@
 (function() {
-    var apiFactory = function ($http, $q, $rootScope, $interval, appSettings) {
+    var apiFactory = function ($http, $q, $log, $rootScope, $interval, appSettings) {
 
         var factory = {};
         var baseUrl = appSettings.urlbase;
@@ -22,9 +22,11 @@
                 params  :   {   module   : apiModule,
                                 function : fn }
             }).success(function(data) {
+                //$log.debug("doApi:success",data);
                 deferred.resolve(data);
-            }).error(function() {
-                deferred.reject('Error')
+            }).error(function(data, status, headers, config) {
+                $log.error("doApi:http error: ", data, status, headers, config);
+                deferred.reject('Error');
             })
             return deferred.promise;
         }
@@ -36,8 +38,10 @@
                 url     :   baseUrl + '/api/op/' + Path,
                 data  :   Data
             }).success(function(data) {
+                //$log.debug("postApi:success",data);
                 deferred.resolve(data);
-            }).error(function() {
+            }).error(function(data, status, headers, config) {
+                $log.error("postApi:http error: ", data, status, headers, config);
                 deferred.reject('Error')
             })
             return deferred.promise;
@@ -45,17 +49,23 @@
 
         function startTimer() {
             stopTimer();
+            $log.info("starting timer");
             timerHandle = $interval(function () {
                     updateState();
-                    updateRunState();
+                    //updateRunState();
                 }, TIMER_INTV, 0);
         };
 
         function stopTimer() {
             if (angular.isDefined(timerHandle)) {
+                $log.info("stopping timer");
                 $interval.cancel(timerHandle);
             }
         };
+
+        function isTimerRunning() {
+            return (angular.isDefined(timerHandle));
+        }
 
 
         // this is the call that will set the values in the stats_object in the rootScope
@@ -70,23 +80,17 @@
 
                         if ($rootScope.currentState!='RUNNING') {
                             stopTimer();
+                        };
+
+                        if ($rootScope.currentState=='RUNNING') {
+                            if (!isTimerRunning()) {
+                                startTimer();
+                            };
                         }
                     },
                     function() {
                         stopTimer();
                     });
-        };
-
-        function updateRunState() {
-            doApi('get_runState')
-                .then(
-                    function(Data) {
-                        $rootScope.currentState = Data.state;
-                        $rootScope.isComplete = (Data.state === 'COMPLETED');
-                },
-                function() {
-                    stopTimer();
-                });
         };
 
         factory.getUploadedFiles = function() {
@@ -127,9 +131,9 @@
             updateState();
         }
 
-        factory.updateRunState = function() {
-            updateRunState();
-        }
+        //factory.updateRunState = function() {
+        //    updateRunState();
+        //}
 
         factory.tm_start = function() {
             startTimer();
@@ -175,6 +179,10 @@
             return doApi('get_config');
         };
 
+        factory.clearFilter = function () {
+            return postApi('clearFilter',{});
+        }
+
         factory.getStats = function () {
             return doApi('get_stats');
         };
@@ -212,7 +220,7 @@
         return factory;
     };
 
-    apiFactory.$inject = ['$http','$q', '$rootScope', '$interval', 'appSettings'];
+    apiFactory.$inject = ['$http','$q', '$log', '$rootScope', '$interval', 'appSettings'];
 
     angular.module('harvesterApp').factory('apiFactory',apiFactory);
 

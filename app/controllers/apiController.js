@@ -1,9 +1,10 @@
 (function() {
 
-    var apiController = function ($scope, $rootScope, usSpinnerService ,$log, $http, $interval, apiFactory, ngDialog, appSettings) {
+    var apiController = function (common, $scope, $rootScope, usSpinnerService ,$log, $http, $interval, apiFactory, ngDialog, appSettings) {
 
         $scope.sortBy = 'name';
         $scope.reverse = false;
+        $scope.showConsole = false;
         $scope.status = {};
         $scope.status_array=[];
         $scope.menu_options=[];
@@ -14,6 +15,9 @@
         $scope.job = {};
         $scope.invokeObj = {};
 
+        $scope.toggleConsole = function() {
+            $scope.showConsole=!$scope.showConsole;
+        };
 
         $rootScope.$on('us-spinner:spin', function(event, key) {
             $scope.spinneractive = true;
@@ -24,28 +28,38 @@
         });
 
         $scope.$on('refresh', function(event, args) {
+            $log.debug("refresh");
             refreshMenu();
             updateMetrics();
         });
 
         $scope.$on('formData', function(event, args) {
+            $log.debug("formData:",$scope.invokeObj);
             doInvoke($scope.invokeObj,args.formData);
         });
 
         $scope.$on('filterData', function(event, args) {
+            $log.debug("filterData:",$scope.invokeObj);
             doInvoke($scope.invokeObj,args);
         });
 
+        $scope.$on('clearFilters', function(event, args) {
+            $log.debug("clearFilters");
+            clearFilters();
+        });
+
         $scope.$on('serializerData', function(event, args) {
+            $log.debug("serializerData:",$scope.invokeObj);
             doInvoke($scope.invokeObj,args);
         });
 
         $scope.$on('analysisData', function(event, args) {
+            $log.debug("analysisData:",$scope.invokeObj);
             doInvoke($scope.invokeObj,args);
         });
 
         $scope.$on('agentsData', function(event, args) {
-            alert("handling emit!");
+            $log.debug("agentsData");
             doInvoke($scope.invokeObj,args);
         });
 
@@ -58,7 +72,8 @@
 
                 case '/api/op/main' :
                     refreshMenu();
-                    apiFactory.updateRunState();
+                    //apiFactory.updateRunState();
+                    common.updateRunState();
                     updateMetrics();
                     getJobDetail();
                     break;
@@ -135,6 +150,8 @@
                 case "analysis" :
                     return "glyphicon glyphicon-wrench";
                 case "filter" :
+                    return "glyphicon glyphicon-filter";
+                case "serializer" :
                     return "glyphicon glyphicon-book";
                 case "start" :
                     return "glyphicon glyphicon-play";
@@ -193,7 +210,9 @@
 
             promise.then(
                 function(Data) {
-                    apiFactory.updateRunState();
+                    $log.debug("doInvoke promise:",Data);
+                    //apiFactory.updateRunState();
+                    common.updateRunState();
                     refreshMenu();
                     getJobDetail();
                     updateMetrics();
@@ -235,6 +254,12 @@
             )
         };
 
+        function clearFilters() {
+            apiFactory.clearFilter()
+                // TODO -- return something here !!
+                .then ()
+        };
+
         function refreshMenu() {
             currentConfig();
             apiFactory.getMenuOptions()
@@ -267,6 +292,7 @@
                     $scope.job.description=Data.jobdesc;
                     $scope.job.analysis_desc=Data.analysis_desc;
                     $scope.job.serializer_desc=Data.serializerDesc;
+                    $scope.job.filter_desc=Data.filterDesc;
                 }),
                 function (data,status,headers,config) {
                     alert('error: ' + status);
@@ -277,7 +303,8 @@
         function init() {
             //alert("called init() in apiController.js");
             apiFactory.getState();
-            apiFactory.updateRunState();
+            //apiFactory.updateRunState();
+            common.updateRunState();
             getJobDetail();
             refreshMenu();
         }
@@ -293,7 +320,7 @@
 
     };
 
-    apiController.$inject = ['$scope', '$rootScope', 'usSpinnerService', '$log', '$http', '$interval', 'apiFactory', 'ngDialog','appSettings'];
+    apiController.$inject = ['common', '$scope', '$rootScope', 'usSpinnerService', '$log', '$http', '$interval', 'apiFactory', 'ngDialog','appSettings'];
 
     angular.module('harvesterApp')
         .controller('apiController', apiController);

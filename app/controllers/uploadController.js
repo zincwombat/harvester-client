@@ -21,8 +21,6 @@
                         $scope.progress = pct;
                         $scope.isUploading = true;
                         $scope.button_label = pct + "%";
-
-                        //console.log('percent: ' + pct);
                     })
                     .success(function (data, status, headers, config) {
                         $scope.button_label = defaultLabel;

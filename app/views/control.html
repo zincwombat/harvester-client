@@ -1,7 +1,5 @@
-<!--<h2> Main API Menu Options View</h2>-->
-
 <div class="container-fluid">
-    <h2> Main API Menu Options View</h2>
+    <h2>Main Menu</h2>
 
     <div class="row">
         <div class="col-md-2">
@@ -57,6 +55,8 @@
                     'empty' }}</a></dd>
                 <dt>Serialiser</dt>
                 <dd>{{ job.serializer_desc || 'undefined' }}</dd>
+                <dt>Filter</dt>
+                <dd>{{ job.filter_desc || 'undefined' }}</dd>
             </dl>
         </div>
         <div class="col-md-5">
@@ -73,7 +73,6 @@
                     <td>File Reads</td>
                     <td>{{ stats_object.filesource.file_fetches }}</td>
                 </tr>
-
                 <tr>
                     <td>Active Agents</td>
                     <td>{{ stats_object.agent.active }}</td>
@@ -101,19 +100,17 @@
             </table>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-1">
-            <div class="wsx_control">
-                <button class="btn btn-primary btn-xs">Button 1</button>
-                <button class="btn btn-primary btn-xs">Button 2</button>
-                <button class="btn btn-primary btn-xs">Button 3</button>
-            </div>
+            <button class="btn btn-primary btn-xs" ng-click="toggleConsole()">{{showConsole ? 'Hide Console' : 'Show Console'}}</button>
         </div>
-        <div class="col-md-11">
+        <div class="col-md-11"></div>
+    </div>
 
-            <section ng-controller="wsController">
-                <div ng-if="wsFactory.cnt()>0" id="wsx">
+    <div ng-show="showConsole" ng-controller="wsController" class="row console" >
+        <div class="col-md-12">
+            <section ng-if="wsFactory.cnt()>0">
+                <div id="wsx">
                     <ul>
                         <li ng-repeat="data in wsFactory.collection track by $index">
                             {{ data.type }} : {{ data.timestamp }} : {{ data.content }}

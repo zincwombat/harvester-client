@@ -1,6 +1,5 @@
 <div class="container-fluid">
-<h2>Please set the Analysis</h2>
-
+<h2>Select the Analysis</h2>
     <div ng-controller="analysisController">
         <table class="table table-striped">
             <tr>
@@ -9,7 +8,11 @@
             </tr>
             <tr ng-repeat="option in analysis_options_array">
                 <td>{{ option.desc }}</td>
-                <td><button class="btn btn-primary" ng-click="submitData(option) && closeThisDialog('Some Value')">Select</button></td>
+                <td>
+                    <button class="btn btn-primary btn-xs"
+                            ng-click="submitData(option) && closeThisDialog('Some Value')">Select
+                    </button>
+                </td>
             </tr>
         </table>
     </div>

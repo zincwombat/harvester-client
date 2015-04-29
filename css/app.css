@@ -57,10 +57,30 @@ button.x-action {
 
 #wsx ul {
 	color: #8df900;
-	margin-top: 10px;
-	margin-bottom: 10px;
 	font: 1em "Courier New", Courier, mono;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.wsx_control {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+div.row {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-style: none;
+}
+
+footer {
+	border-top-style: solid;
+	border-top-width: 1px;
+	margin: 5px;
+}
+
+div.row.console {
+	margin: 0;
+}
+
 
